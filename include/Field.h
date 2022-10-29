@@ -18,8 +18,12 @@ public:
     Generator get_claster(int repair_station_index,int index);
     int get_claster_size(int repair_station_index);
     Field(int size_x, int size_y, int max_lvl);
-    void k_means(int k);
+    void k_means_init(int k);
+    bool k_means_step();
     virtual ~Field();
+    int get_gen_pos_x(int index);
+    int get_gen_pos_y(int index);
+    int get_gen_lvl(int index);
 
 protected:
 private:

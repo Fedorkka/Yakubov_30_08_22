@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1661861559 source:c:\users\fedor\documents\codeblocks projects\yakubov\main.cpp
+1667043423 source:c:\users\fedor\documents\codeblocks projects\yakubov\main.cpp
 	<SFML/Graphics.hpp>
 	"Generator.h"
 	"RepairStation.h"
 	"Field.h"
 	<iostream>
+	<unistd.h>
 
 1525812018 c:\program files\codeblocks\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -435,7 +436,7 @@
 1661810683 c:\users\fedor\documents\codeblocks projects\yakubov\include\generator.h
 	<Dot.h>
 
-1661814507 source:c:\users\fedor\documents\codeblocks projects\yakubov\src\repairstation.cpp
+1666814456 source:c:\users\fedor\documents\codeblocks projects\yakubov\src\repairstation.cpp
 	"RepairStation.h"
 
 1661810787 c:\users\fedor\documents\codeblocks projects\yakubov\include\repairstation.h
@@ -444,10 +445,10 @@
 	<vector>
 	<algorithm>
 
-1661861357 source:c:\users\fedor\documents\codeblocks projects\yakubov\src\field.cpp
+1667043249 source:c:\users\fedor\documents\codeblocks projects\yakubov\src\field.cpp
 	"Field.h"
 
-1661813474 c:\users\fedor\documents\codeblocks projects\yakubov\include\field.h
+1667042279 c:\users\fedor\documents\codeblocks projects\yakubov\include\field.h
 	"RepairStation.h"
 	"Generator.h"
 	<random>

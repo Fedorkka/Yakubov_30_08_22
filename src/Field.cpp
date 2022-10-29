@@ -67,40 +67,44 @@ void Field::random_cent() {
     }
 }
 
-void Field::k_means(int k) {
-    int dist, min_dist, min_index;
-    bool changed;
+void Field::k_means_init(int k) {
     _stations_count= k;
     random_cent();
+}
+bool Field::k_means_step(){
+    int dist, min_dist, min_index;
+    static bool changed= true;
     int centroid[2];
-    do {
-        changed= false;
-        for(int i= 0; i<_stations_count; i++){
-            _stations[i]._generators.clear();
-        }
-        for(int i=0; i<_gen_count; i++) {
-            for(int j =0; j<_stations_count; j++) {
-                dist= _stations[j].get_distance(&_generators[i]);
-                if(j==0) {
-                    min_dist= dist;
-                    min_index= j;
-                } else if(dist<min_dist) {
-                    min_dist= dist;
-                    min_index= j;
-                }
-            }
-            _stations[min_index]._generators.push_back(&_generators[i]);
-        }
-        for(int i =0; i<_stations_count; i++) {
-            centroid[0]= _stations[i].X();
-            centroid[1]= _stations[i].Y();
-            _stations[i].repos();
-            if(centroid[0]!=_stations[i].X()||centroid[1]!=_stations[i].Y()){
-                changed= true;
+    if(!changed){
+        return changed;
+    }
+    changed= false;
+    for(int i= 0; i<_stations_count; i++){
+        _stations[i]._generators.clear();
+    }
+    for(int i=0; i<_gen_count; i++) {
+        for(int j =0; j<_stations_count; j++) {
+            dist= _stations[j].get_distance(&_generators[i]);
+            if(j==0) {
+                min_dist= dist;
+                min_index= j;
+            } else if(dist<min_dist) {
+                min_dist= dist;
+                min_index= j;
             }
         }
+        _stations[min_index]._generators.push_back(&_generators[i]);
+    }
+    for(int i =0; i<_stations_count; i++) {
+        centroid[0]= _stations[i].X();
+        centroid[1]= _stations[i].Y();
+        _stations[i].repos();
+        if(centroid[0]!=_stations[i].X()||centroid[1]!=_stations[i].Y()){
+            changed= true;
+        }
+    }
+    return changed;
 
-    } while(changed);
 }
 Generator Field::get_claster(int repair_station_index, int index) {
     return *_stations[repair_station_index]._generators.at(index);
@@ -117,6 +121,18 @@ int Field::get_station_pos_x(int index) {
 int Field::get_stations_pos_y(int index) {
     return _stations[index].Y();
 }
+int Field::get_gen_pos_x(int index) {
+    return _generators[index].X();
+}
+int Field::get_gen_pos_y(int index) {
+    return _generators[index].Y();
+}
+int Field::get_gen_lvl(int index) {
+    return _generators[index].LVL();
+}
+
+
+
 
 
 
