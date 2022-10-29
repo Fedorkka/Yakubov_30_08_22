@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1667043423 source:c:\users\fedor\documents\codeblocks projects\yakubov\main.cpp
+1667051199 source:c:\users\fedor\documents\codeblocks projects\yakubov\main.cpp
 	<SFML/Graphics.hpp>
 	"Generator.h"
 	"RepairStation.h"
